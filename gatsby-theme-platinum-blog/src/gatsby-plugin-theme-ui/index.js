@@ -16,6 +16,7 @@ const theme = {
       display: "flex",
       maxWidth: "maxPageWidth",
       justifyContent: "space-between",
+      alignItems: "center",
       mx: "auto",
       px: [1, 3],
       py: [0, 1],
