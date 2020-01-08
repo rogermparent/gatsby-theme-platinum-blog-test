@@ -74,6 +74,17 @@ const theme = {
       color: "inherit",
       textDecoration: "none"
     },
+    unstyledList: {
+      p: 0,
+      m: 0,
+      listStyle: "none"
+    },
+    inlineList: {
+      variant: "styles.unstyledList",
+      li: {
+        display: "inline-block"
+      }
+    },
   }
 };
 
