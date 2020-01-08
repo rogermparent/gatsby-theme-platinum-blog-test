@@ -17,7 +17,20 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-theme-platinum"
+      resolve: "gatsby-theme-platinum",
+      options: {
+        transformerMdxContentPagesOptions: [
+          {
+            typeName: "MdxPage",
+            relativeDirectory: ""
+          },
+          {
+            typeName: "MdxBlogPost",
+            relativeDirectory: "posts",
+            defaultTemplate: "post"
+          }
+        ]
+      }
     }
   ]
 };
