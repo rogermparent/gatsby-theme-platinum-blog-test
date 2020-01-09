@@ -4,14 +4,18 @@ import { Fragment } from "react";
 import { graphql, Link } from "gatsby";
 import { Heading, Box, Text } from "@theme-ui/components";
 
-const PostList = ({ posts }) => (
+const PostList = ({ posts, className, sx, itemSx }) => (
   <ul
     sx={{
       variant: "styles.unstyledList",
       maxWidth: "maxContentWidth",
       width: "100%",
-      mx: "auto"
+      mx: "auto",
+      fontSize: [2, 3],
+      px: 3,
+      ...sx
     }}
+    className={className}
   >
     {posts.map(({ pagePath, frontmatter: { title, date, tags } }, i) => (
       <li key={i}>
@@ -20,26 +24,27 @@ const PostList = ({ posts }) => (
           title={title}
           date={date}
           tags={tags}
+          sx={itemSx}
         />
       </li>
     ))}
   </ul>
 );
 
-const PostListing = ({ pagePath, title, date, tags }) => (
+const PostListing = ({ pagePath, title, date, tags, className, sx }) => (
   <Box
     sx={{
       my: [3, 4],
-      mx: 3,
-      fontSize: [2, 3],
       a: {
         color: "inherit",
         textDecoration: "none",
         ":hover": {
           textDecoration: "underline"
         }
-      }
+      },
+      ...sx
     }}
+    className={className}
   >
     <Link to={pagePath}>
       <Heading>{title}</Heading>
