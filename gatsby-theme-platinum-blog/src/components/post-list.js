@@ -1,37 +1,69 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Fragment } from "react";
-import { graphql, Link } from "gatsby";
+import { graphql, useStaticQuery, Link } from "gatsby";
 import { Heading, Box, Text } from "@theme-ui/components";
 
-const PostList = ({ posts, className, sx, itemSx }) => (
-  <ul
-    sx={{
-      variant: "styles.unstyledList",
-      maxWidth: "maxContentWidth",
-      width: "100%",
-      mx: "auto",
-      fontSize: [2, 3],
-      px: 3,
-      ...sx
-    }}
-    className={className}
-  >
-    {posts.map(({ pagePath, frontmatter: { title, date, tags } }, i) => (
-      <li key={i}>
-        <PostListing
-          pagePath={pagePath}
-          title={title}
-          date={date}
-          tags={tags}
-          sx={itemSx}
-        />
-      </li>
-    ))}
-  </ul>
-);
+const useTagsMetadata = () =>
+  useStaticQuery(graphql`
+    {
+      taxonomy(key: { eq: "tags" }) {
+        termPagePath
+      }
+    }
+  `).taxonomy;
 
-const PostListing = ({ pagePath, title, date, tags, className, sx }) => (
+const PostList = ({ posts, className, sx, itemSx }) => {
+  const { termPagePath } = useTagsMetadata();
+  return (
+    <ul
+      sx={{
+        variant: "styles.unstyledList",
+        maxWidth: "maxContentWidth",
+        width: "100%",
+        mx: "auto",
+        fontSize: [2, 3],
+        px: 3,
+        ...sx
+      }}
+      className={className}
+    >
+      {posts.map(
+        (
+          {
+            pagePath,
+            frontmatter: { title, date },
+            childTaxonomyValueTerms: {
+              termsByTaxonomy: { tags }
+            }
+          },
+          i
+        ) => (
+          <li key={i}>
+            <PostListing
+              pagePath={pagePath}
+              title={title}
+              date={date}
+              tags={tags}
+              sx={itemSx}
+              termPagePath={termPagePath}
+            />
+          </li>
+        )
+      )}
+    </ul>
+  );
+};
+
+const PostListing = ({
+  pagePath,
+  title,
+  date,
+  tags,
+  className,
+  sx,
+  termPagePath
+}) => (
   <Box
     sx={{
       my: [3, 4],
@@ -54,10 +86,10 @@ const PostListing = ({ pagePath, title, date, tags, className, sx }) => (
       {tags && tags.length > 0 && (
         <Fragment>
           {" - "}
-          {tags.map((tag, i) => (
+          {tags.map(({ label, slug }, i) => (
             <Fragment key={i}>
               {i > 0 && ", "}
-              <span>{tag}</span>
+              <Link to={`${termPagePath}/${slug}`}>{label}</Link>
             </Fragment>
           ))}
         </Fragment>
@@ -71,8 +103,15 @@ export const fragment = graphql`
     pagePath
     frontmatter {
       title
-      tags
       date(formatString: "MMMM Do, YYYY")
+    }
+    childTaxonomyValueTerms {
+      termsByTaxonomy {
+        tags {
+          label
+          slug
+        }
+      }
     }
   }
 `;
