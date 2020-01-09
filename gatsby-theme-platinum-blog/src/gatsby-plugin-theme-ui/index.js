@@ -42,7 +42,7 @@ const theme = {
       }
     },
     footerWrapper: {
-      variant: "styles.inverted",
+      variant: "styles.inverted"
     },
     footer: {
       textAlign: "center",
@@ -84,7 +84,7 @@ const theme = {
       li: {
         display: "inline-block"
       }
-    },
+    }
   }
 };
 

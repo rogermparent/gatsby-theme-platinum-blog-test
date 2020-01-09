@@ -6,10 +6,7 @@ import { SEO, PostHeader } from "gatsby-theme-platinum-blog";
 
 const DefaultPostLayout = ({
   data: {
-    mdxBlogPost: {
-      body,
-      frontmatter
-    }
+    mdxBlogPost: { body, frontmatter }
   },
   pageContext
 }) => {
@@ -30,7 +27,7 @@ export default DefaultPostLayout;
 
 export const pageQuery = graphql`
   query DefaultPostQuery($id: String!) {
-    mdxBlogPost(id: {eq: $id}) {
+    mdxBlogPost(id: { eq: $id }) {
       body
       frontmatter {
         title

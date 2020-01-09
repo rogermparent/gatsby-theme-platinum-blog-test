@@ -22,11 +22,9 @@ const Footer = () => {
   const { copy } = useFooterMetadata();
   return (
     <Box variant="layout.footerWrapper">
-      <Container variant="layout.footer">
-        {copy}
-      </Container>
+      <Container variant="layout.footer">{copy}</Container>
     </Box>
-  )
+  );
 };
 
 export default Footer;
