@@ -1,7 +1,8 @@
 module.exports = {
   plugins: [
-    { resolve: `gatsby-theme-platinum-blog`, options: {} },
+    "gatsby-theme-platinum-blog",
     "gatsby-plugin-preload-link-crossorigin",
-    "gatsby-plugin-netlify-cache"
+    "gatsby-plugin-netlify-cache",
+    "gatsby-plugin-offline"
   ]
 };
