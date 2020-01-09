@@ -5749,6 +5749,16 @@ gatsby-plugin-create-content-pages@^1.0.0:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-create-content-pages/-/gatsby-plugin-create-content-pages-1.0.0.tgz#cc2b4c0ab7abc03f55b05078802b4be4ad635404"
   integrity sha512-DK+jID2WsSuDftUYwSRaP8ax7I9WIkb5HHx+zHz8hq5/J+cdH+F9h0JZ6nBHoQao7oNpB+VO4K+vz97lbzzL8g==
 
+gatsby-plugin-manifest@^2.2.37:
+  version "2.2.37"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.37.tgz#ea385bbd453d8455d3c4715c4f3b1e8c1313a97b"
+  integrity sha512-RT7ALsnq/H1gZrmyHJ6jJFn+Z/OzDJgiwVlP5qIUmAzAoqC95bq3XbXB5yHCePAvZjKn0liIRjUyp0OHVKQlNQ==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    gatsby-core-utils "^1.0.26"
+    semver "^5.7.1"
+    sharp "^0.23.4"
+
 gatsby-plugin-mdx@^1.0.58:
   version "1.0.64"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.0.64.tgz#9f5d40a02424bbbb4f1a4414609b60dd19a4c398"
