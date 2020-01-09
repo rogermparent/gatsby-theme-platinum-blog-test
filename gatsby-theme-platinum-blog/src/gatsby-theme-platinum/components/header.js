@@ -39,8 +39,8 @@ const Header = () => {
           {title}
         </Link>
         <Flex as="nav">
-          {nav.map(({ label, url }) => (
-            <Link to={url} sx={{ variant: "styles.NavLink" }}>
+          {nav.map(({ label, url }, i) => (
+            <Link key={i} to={url} sx={{ variant: "styles.NavLink" }}>
               {label}
             </Link>
           ))}
