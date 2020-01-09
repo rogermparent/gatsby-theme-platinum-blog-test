@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Heading, Box, Text } from "@theme-ui/components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Layout } from "gatsby-theme-platinum";
 import { SEO, PostHeader } from "gatsby-theme-platinum-blog";
