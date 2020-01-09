@@ -81,7 +81,7 @@ const PostListing = ({
     <Link to={pagePath}>
       <Heading>{title}</Heading>
     </Link>
-    <Text sx={{ color: "gray.6" }}>
+    <Text sx={{ color: "gray.7" }}>
       {date}
       {tags && tags.length > 0 && (
         <Fragment>
